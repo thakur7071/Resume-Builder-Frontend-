@@ -55,12 +55,22 @@ setEducationalList(newEntries);
 
 
     const RemoveEducation = () => {
-        setEducationalList(educationalList=> educationalList.slice(0, -1))
-        toast.success('Removed', {
+        if (educationalList.length === 1) {
+            toast.error('At least one Education is required.', {
+                duration: 1000,
+                style: { backgroundColor: 'red', color: 'white' },
+            });
+            return;
+        }
+    
+        setEducationalList(educationalList.slice(0, -1));
+    
+        toast.success('Education removed', {
             duration: 1000,
-            style: { backgroundColor: 'red', color: 'white' },
-          });
-    }
+            style: { backgroundColor: 'green', color: 'white' },
+        });
+    };
+    
 
     const onSave = () => {
         setLoading(true)
@@ -94,17 +104,18 @@ setEducationalList(newEntries);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[educationalList])
     return (
-        <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
+        <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 animate-fadeIn'>
             <h2 className='font-bold text-lg'>Education</h2>
             <p>Add Your Educational details</p>
             <div>
                 {educationalList.map((item, index) => (
                     <div key={index}>
-                        <div className='grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg'>
+                        <div className='grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg animate-fadeIn'>
 
                             <div className='col-span-2'>
                                 <label>University Name</label>
                                 <Input name="universityName"
+                                 className="transition-all animate-fadeIn"
                                 defaultValue={item?.universityName}
                                     onChange={(e) => handleChange(e, index)} />
                             </div>
@@ -112,6 +123,7 @@ setEducationalList(newEntries);
                             <div>
                                 <label>Degree</label>
                                 <Input name="degree"
+                                 className="transition-all animate-fadeIn"
                                   defaultValue={item?.degree}
                                     onChange={(e) => handleChange(e, index)} />
                             </div>
@@ -121,6 +133,7 @@ setEducationalList(newEntries);
                             <div>
                                 <label>Major</label>
                                 <Input name="major"
+                                 className="transition-all animate-fadeIn"
                                   defaultValue={item?.major}
                                     onChange={(e) => handleChange(e, index)} />
                             </div>
@@ -130,6 +143,7 @@ setEducationalList(newEntries);
                             <div>
                                 <label>Start Date</label>
                                 <Input type="date" name="startDate"
+                                 className="transition-all animate-fadeIn"
                                   defaultValue={item?.startDate}
                                     onChange={(e) => handleChange(e, index)} />
                             </div>
@@ -139,6 +153,7 @@ setEducationalList(newEntries);
                             <div>
                                 <label>End Date</label>
                                 <Input type="date" name="endDate"
+                                className="transition-all animate-fadeIn"
                                   defaultValue={item?.endDate}
                                     onChange={(e) => handleChange(e, index)} />
                             </div>
@@ -150,12 +165,21 @@ setEducationalList(newEntries);
             </div>
             <div className='flex justify-between'>
                             <div className='flex gap-2'>
-                                <Button variant="outline" onClick={AddNewEducation} className="text-primary">+ Add</Button>
-                                <Button variant="outline" onClick={RemoveEducation} className="text-primary">- Remove</Button>
+                                <Button variant="outline" 
+                                onClick={AddNewEducation} 
+                                   className="text-primary button-item animate-fadeIn"
+                                >+ Add</Button>
+                                <Button variant="outline"
+                                 onClick={RemoveEducation}
+                                className="text-primary button-item animate-fadeIn"
+                                  >- Remove</Button>
                             </div>
 
 
-                            <Button disabled={loading} onClick={() => onSave()}>
+                            <Button disabled={loading} onClick={() => onSave()}
+                                
+                                className="transition-all button-item animate-fadeIn"
+                                >
                                 {loading ? <LoaderCircle className='animate-spin' /> : 'Save'}
                             </Button>
                         </div>

@@ -61,53 +61,71 @@ function PersonalDetail({ enabledNext }) {
   };
 
   return (
-    <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
+    <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 animate-fadeIn'>
       <h2 className='font-bold text-lg'>Personal Detail</h2>
       <p>Get Started with the basic information</p>
       <form onSubmit={onSave}>
-        <div className='grid grid-cols-2 mt-5 gap-3'>
+        <div className='grid grid-cols-2 mt-5 gap-3 animate-fadeIn'>
           <div>
             <label className='text-sm'>First Name</label>
-            <Input name="firstName" defaultValue={resumeInfo?.firstName} required onChange={handleInputChange} />
+            <Input name="firstName"
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.firstName} required onChange={handleInputChange} />
           </div>
 
           <div>
             <label className='text-sm'>Last Name</label>
-            <Input name="lastName" defaultValue={resumeInfo?.lastName} required onChange={handleInputChange} />
+            <Input name="lastName"
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.lastName} required onChange={handleInputChange} />
           </div>
 
           <div className='col-span-2'>
             <label className='text-sm'>JobTitle</label>
-            <Input name="jobTitle" defaultValue={resumeInfo?.jobTitle} required onChange={handleInputChange} />
+            <Input name="jobTitle"
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.jobTitle} required onChange={handleInputChange} />
           </div>
 
           <div className='col-span-2'>
             <label className='text-sm'>Address</label>
-            <Input name="address" defaultValue={resumeInfo?.address} required onChange={handleInputChange} />
+            <Input name="address"
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.address} required onChange={handleInputChange} />
           </div>
 
           <div>
             <label className='text-sm'>Phone</label>
-            <Input name="phone" defaultValue={resumeInfo?.phone} required onChange={handleInputChange} />
+            <Input name="phone"
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.phone} required onChange={handleInputChange} />
           </div>
 
           <div>
             <label className='text-sm'>Email</label>
-            <Input name="email" defaultValue={resumeInfo?.email} required onChange={handleInputChange} />
+            <Input name="email" 
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.email} required onChange={handleInputChange} />
           </div>
 
           <div>
             <label className='text-sm'>Github</label>
-            <Input name="github" defaultValue={resumeInfo?.github} required onChange={handleInputChange} />
+            <Input name="github" 
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.github} required onChange={handleInputChange} />
           </div>
 
           <div>
             <label className='text-sm'>LinkedIn</label>
-            <Input name="linkdin" defaultValue={resumeInfo?.linkdin} required onChange={handleInputChange} />
+            <Input name="linkdin" 
+             className="transition-all animate-fadeIn"
+            defaultValue={resumeInfo?.linkdin} required onChange={handleInputChange} />
           </div>
         </div>
         <div className='mt-3 flex justify-end'>
-          <Button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading}
+           className="transition-all button-item animate-fadeIn"
+          >
             {loading ? <LoaderCircle className='animate-spin' /> : 'Save'}
           </Button>
         </div>

@@ -66,31 +66,34 @@ function Summary({ enabledNext }) {
 
   return (
     <div>
-      <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
+      <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 animate-fadeIn'>
         <h2 className='font-bold text-lg'>Summary</h2>
         <p>Add a summary for your job title</p>
 
         <form className='mt-7' onSubmit={handleSave}>
-          <div className='flex justify-between items-end'>
+          <div className='flex justify-between items-end animate-fadeIn'>
             <label>Add summary</label>
             <Button
               variant="outline"
               onClick={generateSummaryFromAI}
               type="button"
               size="sm"
-              className="border-primary text-primary flex gap-2"
+              className="border-primary text-primary flex gap-2 transition-all animate-fadeIn"
             >
               <Brain className='h-4 w-4' /> Generate from AI
             </Button>
           </div>
           <Textarea
-            className="mt-5"
+            className="mt-5 transition-all animate-fadeIn"
             required
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
           />
           <div className='mt-2 flex justify-end'>
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading}
+            
+             className="transition-all button-item animate-fadeIn"
+            >
               {loading ? <LoaderCircle className='animate-spin' /> : 'Save'}
             </Button>
           </div>
@@ -106,7 +109,7 @@ function Summary({ enabledNext }) {
               onClick={() => setSummary(item?.summary)}
               className='p-5 shadow-lg my-4 rounded-lg cursor-pointer'
             >
-              <h2 className='font-bold my-1 text-primary'>Level: {item?.experience_level}</h2>
+              <h2 className='font-bold my-1 text-primary '>Level: {item?.experience_level}</h2>
               <p>{item?.summary}</p>
             </div>
           ))}
