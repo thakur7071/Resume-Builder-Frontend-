@@ -1,5 +1,5 @@
 import { ResumeInfoContext } from '@/context/ResumeInfoContext'
-import  { useContext } from 'react'
+import { useContext } from 'react'
 import PersonalDetailPreview from './preview/PersonalDetailPreview'
 import SummaryPreview from './preview/SummaryPreview'
 import ExperiencePreview from './preview/ExperiencePreview'
@@ -11,42 +11,42 @@ import ProjectPreview from './preview/ProjectPreview'
 
 
 function ResumePreview() {
-   const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext)
+  const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
   return (
     <div className='shadow-lg h-full p-5 border-t-[5px] border-t-black'>
-       {/* Personal Detail */}
-            <PersonalDetailPreview resumeInfo={resumeInfo}/>
+      {/* Personal Detail */}
+      <PersonalDetailPreview resumeInfo={resumeInfo} />
 
 
 
-          {/* Summary */}
-             <SummaryPreview resumeInfo={resumeInfo}/>
+      {/* Summary */}
+      <SummaryPreview resumeInfo={resumeInfo} />
 
 
- {/* Education */}
- <EducationalPreview resumeInfo={resumeInfo}/>
+      {/* Education */}
+      <EducationalPreview resumeInfo={resumeInfo} />
 
-             {/* Professional Experience */}
-                <ExperiencePreview resumeInfo={resumeInfo}/>
+      {/* Professional Experience */}
+      <ExperiencePreview resumeInfo={resumeInfo} />
 
-                 {/* Projects */}
-                 <ProjectPreview resumeInfo={resumeInfo}/>
-
-               
-
+      {/* Projects */}
+      <ProjectPreview resumeInfo={resumeInfo} />
 
 
 
-                   {/* Skills */}
-                   <SkillsPreview resumeInfo={resumeInfo}/>
-
-                        
-                         {/* Certificate */}
-                         <CertificatePreview resumeInfo={resumeInfo}/>
 
 
-                    {/* Interest */}
-                    <InterestPreview resumeInfo={resumeInfo}/>
+
+      {/* Skills */}
+      <SkillsPreview resumeInfo={resumeInfo} />
+
+
+      {/* Certificate */}
+      <CertificatePreview resumeInfo={resumeInfo} />
+
+
+      {/* Interest */}
+      <InterestPreview resumeInfo={resumeInfo} />
     </div>
   )
 }

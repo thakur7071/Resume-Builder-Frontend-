@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 function CertificatePreview({ resumeInfo }) {
   return (
@@ -15,5 +15,16 @@ function CertificatePreview({ resumeInfo }) {
     </div>
   );
 }
+
+// Define prop types
+CertificatePreview.propTypes = {
+  resumeInfo: PropTypes.shape({
+    certificate: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      })
+    )
+  })
+};
 
 export default CertificatePreview;

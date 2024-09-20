@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function EducationalPreview({ resumeInfo }) {
   return (
-    <div className='my-6'>
+    <div className='my-6 '>
       <h2 className='text-center font-bold text-sm mb-2'>Education</h2>
       <hr className='my-4 border-t-[1.8px] border-t-black' />
       {resumeInfo?.education.map((education, index) => (

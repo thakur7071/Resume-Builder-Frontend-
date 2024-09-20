@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function SummaryPreview({ resumeInfo }) {
   return (
-    <p className='text-sm'>{resumeInfo?.summary}</p>
+    <p className='text-sm '>{resumeInfo?.summary}</p>
   );
 }
 

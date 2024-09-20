@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function PersonalDetailPreview({ resumeInfo }) {
   return (
-    <div className='p-4 sm:p-6'>
+    <div className='p-4 sm:p-6 '>
       <h2 className='font-bold text-xl sm:text-2xl md:text-3xl text-center'>
         {resumeInfo?.firstName} {resumeInfo?.lastName}
       </h2>

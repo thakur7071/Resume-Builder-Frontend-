@@ -103,6 +103,7 @@ const RemoveSkill = () => {
           >
             <div>
               <label className='text-xs'>Name</label>
+              
               <Input className="w-full transition-all animate-fadeIn"
                 defaultValue={item?.name}
                 onChange={(e) => handleChange(index, 'name', e.target.value)} />

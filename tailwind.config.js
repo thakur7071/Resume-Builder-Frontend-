@@ -74,6 +74,14 @@ export default {
           from: { opacity: 0, transform: 'translateY(20px)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
+
+        slideUp: {
+           '0%': { transform: 'translateY(100%)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+
+        
+       
       },
       animation: {
         // Existing animations for accordion
@@ -81,7 +89,11 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         // New animation for fade-in
         fadeIn: "fadeIn 0.5s ease-out forwards",
+        'slide-up': 'slideUp 0.5s ease-out',
+        
+       
       },
+      
     },
   },
   plugins: [tailwindcssAnimate],

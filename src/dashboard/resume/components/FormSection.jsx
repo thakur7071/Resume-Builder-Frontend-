@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PersonalDetail from './forms/PersonalDetail'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, ArrowRight, Home, } from 'lucide-react'
@@ -11,19 +11,13 @@ import Interest from './forms/Interest';
 import Project from './forms/Project';
 import { Link, Navigate, useParams } from 'react-router-dom';
 
-
-
-
-
-
-
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
   const [enableNext, setEnableNext] = useState(false)
   const { resumeId } = useParams();
   return (
-    <div>
-      <div className='flex justify-between items-center'>
+    <div >
+      <div className='flex justify-between items-center '>
         <div className='flex gap-5'>
           <Link to={"/dashboard"}>
             <Button><Home /></Button>
@@ -49,7 +43,7 @@ function FormSection() {
         : activeFormIndex == 2 ?
           <Summary enabledNext={(v) => setEnableNext(v)} />
           : activeFormIndex == 3 ?
-            <Education />
+            <Education enabledNext={(v) => setEnableNext(v)}/>
             : activeFormIndex == 4 ?
               <Experience enabledNext={(v) => setEnableNext(v)} />
               : activeFormIndex == 5 ?
