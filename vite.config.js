@@ -11,7 +11,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['axios'], // Mark 'axios' as external to avoid bundling issues
+      // Don't mark 'axios' as external so it's bundled with the app
     },
   },
 });
