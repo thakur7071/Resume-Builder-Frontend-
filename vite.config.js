@@ -1,17 +1,14 @@
-import path from "path";
-import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// Use the path module directly with `import` (ensure compatibility in the Vite environment)
+import { resolve } from "path";
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-  build: {
-    rollupOptions: {
-      external: ["axios"], // Explicitly externalize axios
+      "@": resolve(__dirname, "./src"),  // Use resolve() instead of path.resolve()
     },
   },
 });
