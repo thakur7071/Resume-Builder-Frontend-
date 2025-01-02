@@ -1,4 +1,4 @@
-import React, {StrictMode } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -13,6 +13,7 @@ import ViewResume from './my-resume/[resumeId]/view/index.jsx'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 const router = createBrowserRouter([
   {
+    
 
    element:<App/>,
    children:[

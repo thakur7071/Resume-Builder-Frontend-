@@ -5,17 +5,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { ResumeInfoContext } from '@/context/ResumeInfoContext';
 import { useParams } from 'react-router-dom';
 import GlobalApi from './../../../../../service/GlobalApi';
-import { Brain, LoaderCircle } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
 import { toast } from 'sonner';
-import { AIChatSession } from './../../../../../service/AIModal';
-
-const promptTemplate = "Job Title: {jobTitle} , Depends on job title give me list of summary for 3 experience levels Fresher level Mid level and Experienced level in 4-5 lines in array format, With summary and experience_level Field in JSON Format";
 
 function Summary({ enabledNext }) {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [summary, setSummary] = useState(resumeInfo?.summary || '');
   const [loading, setLoading] = useState(false);
-  const [aiGeneratedSummaryList, setAiGeneratedSummaryList] = useState([]);
   const params = useParams();
 
   useEffect(() => {
@@ -23,22 +19,6 @@ function Summary({ enabledNext }) {
       setResumeInfo({ ...resumeInfo, summary });
     }
   }, [summary]);
-
-  const generateSummaryFromAI = async () => {
-    setLoading(true);
-    const prompt = promptTemplate.replace('{jobTitle}', resumeInfo?.jobTitle);
-
-    try {
-      const result = await AIChatSession.sendMessage(prompt);
-      const summaries = JSON.parse(result.response.text());
-      setAiGeneratedSummaryList(summaries);
-    } catch (error) {
-      console.error(error); // Log the error
-      toast.error("Failed to generate summary");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -73,15 +53,6 @@ function Summary({ enabledNext }) {
         <form className='mt-7' onSubmit={handleSave}>
           <div className='flex justify-between items-end animate-fadeIn'>
             <label>Add summary</label>
-            <Button
-              variant="outline"
-              onClick={generateSummaryFromAI}
-              type="button"
-              size="sm"
-              className="border-primary text-primary flex gap-2 transition-all animate-fadeIn"
-            >
-              <Brain className='h-4 w-4' /> Generate from AI
-            </Button>
           </div>
           <Textarea
             className="mt-5 transition-all animate-fadeIn"
@@ -90,31 +61,12 @@ function Summary({ enabledNext }) {
             onChange={(e) => setSummary(e.target.value)}
           />
           <div className='mt-2 flex justify-end'>
-            <Button type="submit" disabled={loading}
-            
-             className="transition-all button-item animate-fadeIn"
-            >
+            <Button type="submit" disabled={loading} className="transition-all button-item animate-fadeIn">
               {loading ? <LoaderCircle className='animate-spin' /> : 'Save'}
             </Button>
           </div>
         </form>
       </div>
-
-      {aiGeneratedSummaryList.length > 0 && (
-        <div className='my-5'>
-          <h2 className='font-bold text-lg'>Suggestions</h2>
-          {aiGeneratedSummaryList.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => setSummary(item?.summary)}
-              className='p-5 shadow-lg my-4 rounded-lg cursor-pointer'
-            >
-              <h2 className='font-bold my-1 text-primary '>Level: {item?.experience_level}</h2>
-              <p>{item?.summary}</p>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
