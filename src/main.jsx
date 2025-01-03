@@ -11,7 +11,7 @@ import EditResume from './dashboard/resume/[resumeId]/edit/index.jsx'
 import ViewResume from './my-resume/[resumeId]/view/index.jsx'
 
 // Retrieve the publishable key from the environment
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const PUBLISHABLE_KEY = import.meta.env.local.VITE_CLERK_PUBLISHABLE_KEY
 
 // Debug: Log the publishable key to make sure it's being loaded correctly
 console.log("VITE_CLERK_PUBLISHABLE_KEY:", PUBLISHABLE_KEY)
