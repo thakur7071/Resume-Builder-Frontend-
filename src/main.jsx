@@ -10,7 +10,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import EditResume from './dashboard/resume/[resumeId]/edit/index.jsx'
 import ViewResume from './my-resume/[resumeId]/view/index.jsx'
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const PUBLISHABLE_KEY = "pk_test_d29ya2FibGUtbWFuYXRlZS05OS5jbGVyay5hY2NvdW50cy5kZXYk";
 const router = createBrowserRouter([
   {
     
