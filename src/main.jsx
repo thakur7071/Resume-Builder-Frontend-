@@ -12,9 +12,9 @@ import ViewResume from './my-resume/[resumeId]/view/index.jsx'
 
 // Retrieve the publishable key from the environment
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+console.log('VITE_CLERK_PUBLISHABLE_KEY:', import.meta.env.VITE_CLERK_PUBLISHABLE_KEY);
 
-// Debug: Log the publishable key to make sure it's being loaded correctly
-console.log("VITE_CLERK_PUBLISHABLE_KEY:", PUBLISHABLE_KEY)
+
 
 // If the publishable key is missing, log an error and stop rendering
 if (!PUBLISHABLE_KEY) {
