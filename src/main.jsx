@@ -10,40 +10,36 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import EditResume from './dashboard/resume/[resumeId]/edit/index.jsx'
 import ViewResume from './my-resume/[resumeId]/view/index.jsx'
 
+// Retrieve the publishable key from the environment
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
+// Debug: Log the publishable key to make sure it's being loaded correctly
+console.log("VITE_CLERK_PUBLISHABLE_KEY:", PUBLISHABLE_KEY)
+
+// If the publishable key is missing, log an error and stop rendering
+if (!PUBLISHABLE_KEY) {
+  console.error('Clerk publishable key is missing. Please set VITE_CLERK_PUBLISHABLE_KEY in your environment variables.')
+}
+
+// Define routes using createBrowserRouter
 const router = createBrowserRouter([
   {
-    
-
-   element:<App/>,
-   children:[
-  {
-      path:'/dashboard',
-      element:<Dashboard/>
-    },{
-      path:'/dashboard/resume/:resumeId/edit',
-      element:<EditResume/>
-    }
-   ]
+    element: <App />,
+    children: [
+      { path: '/dashboard', element: <Dashboard /> },
+      { path: '/dashboard/resume/:resumeId/edit', element: <EditResume /> },
+    ]
   },
-  {
-    path:'/',
-    element:<Home/>
-  },
-{
-  path:'/auth/sign-in',
-  element:<SignInPage/>
-},{
-  path:'/my-resume/:resumeId/view',
-  element:<ViewResume/>
-}
+  { path: '/', element: <Home /> },
+  { path: '/auth/sign-in', element: <SignInPage /> },
+  { path: '/my-resume/:resumeId/view', element: <ViewResume /> },
 ])
 
+// Render the application
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-    <RouterProvider router={router}/>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <RouterProvider router={router} />
     </ClerkProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
